@@ -22,11 +22,13 @@
 
 /*global mOxie:true */
 
-;(function(window, o, undef) {
+import moxie from './moxie';
 
-var delay = window.setTimeout
-, fileFilters = {}
-;
+let o = moxie;
+const undef = undefined;
+
+const delay = window.setTimeout;
+let fileFilters = {};
 
 // convert plupload features to caps acceptable by mOxie
 function normalizeCaps(settings) {		
@@ -2331,7 +2333,5 @@ plupload.File = (function() {
 		self.size = self.loaded = self.uploaded = self.failed = self.queued = self.percent = self.bytesPerSec = 0;
 	};
 };
-
-window.plupload = plupload;
-
-}(window, mOxie));
+export default {plupload, moxie};
+// module.exports = {plupload, moxie};

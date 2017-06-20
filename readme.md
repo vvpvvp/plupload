@@ -1,4 +1,16 @@
-# Plupload
+# Plupload-es6
+
+## start
+
+```js
+npm install --save plupload-es6
+```
+It's exports two object, plupload, moxie;
+```js
+module.exports = {plupload, moxie};
+```
+
+## original
 
 Plupload is a cross-browser multi-runtime file uploading API. Basically, a set of tools that will help you to 
 build a reliable and visually appealing file uploader in minutes.

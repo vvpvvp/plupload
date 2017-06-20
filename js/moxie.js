@@ -16,7 +16,7 @@
 
 /*jshint smarttabs:true, undef:true, latedef:true, curly:true, bitwise:true, camelcase:true */
 /*globals $code */
-
+let moxie = {};
 (function(exports, undefined) {
 	"use strict";
 
@@ -10674,7 +10674,7 @@ define("moxie/runtime/html4/image/Image", [
 });
 
 expose(["moxie/core/utils/Basic","moxie/core/I18n","moxie/core/utils/Mime","moxie/core/utils/Env","moxie/core/utils/Dom","moxie/core/Exceptions","moxie/core/EventTarget","moxie/core/utils/Encode","moxie/runtime/Runtime","moxie/runtime/RuntimeClient","moxie/file/Blob","moxie/file/File","moxie/file/FileInput","moxie/file/FileDrop","moxie/runtime/RuntimeTarget","moxie/file/FileReader","moxie/core/utils/Url","moxie/file/FileReaderSync","moxie/xhr/FormData","moxie/xhr/XMLHttpRequest","moxie/runtime/Transporter","moxie/image/Image","moxie/core/utils/Events"]);
-})(this);/**
+})(moxie);/**
  * o.js
  *
  * Copyright 2013, Moxiecode Systems AB
@@ -10693,34 +10693,31 @@ Globally exposed namespace with the most frequently used public classes and hand
 @static
 @private
 */
-(function(exports) {
-	"use strict";
 
-	var o = {}, inArray = exports.moxie.core.utils.Basic.inArray;
-
-	// directly add some public classes
-	// (we do it dynamically here, since for custom builds we cannot know beforehand what modules were included)
-	(function addAlias(ns) {
-		var name, itemType;
-		for (name in ns) {
-			itemType = typeof(ns[name]);
-			if (itemType === 'object' && !~inArray(name, ['Exceptions', 'Env', 'Mime'])) {
-				addAlias(ns[name]);
-			} else if (itemType === 'function') {
-				o[name] = ns[name];
-			}
+moxie = moxie.moxie;
+var inArray = moxie.core.utils.Basic.inArray;
+let utils = {};
+// directly add some public classes
+// (we do it dynamically here, since for custom builds we cannot know beforehand what modules were included)
+(function addAlias(ns) {
+	var name, itemType;
+	for (name in ns) {
+		itemType = typeof(ns[name]);
+		if (itemType === 'object' && !~inArray(name, ['Exceptions', 'Env', 'Mime'])) {
+			addAlias(ns[name]);
+		} else if (itemType === 'function') {
+			moxie[name] = ns[name];
 		}
-	})(exports.moxie);
-
-	// add some manually
-	o.Env = exports.moxie.core.utils.Env;
-	o.Mime = exports.moxie.core.utils.Mime;
-	o.Exceptions = exports.moxie.core.Exceptions;
-
-	// expose globally
-	exports.mOxie = o;
-	if (!exports.o) {
-		exports.o = o;
 	}
-	return o;
-})(this);
+})(moxie);
+
+for(let basic in moxie.core.utils.Basic){
+	moxie[basic] = moxie.core.utils.Basic[basic];
+}
+// add some manually
+moxie.Env = moxie.core.utils.Env;
+moxie.Mime = moxie.core.utils.Mime;
+moxie.Exceptions = moxie.core.Exceptions;
+moxie.EventTarget = moxie.core.EventTarget;
+
+module.exports = moxie;

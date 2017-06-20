@@ -1,43 +1,24 @@
 {
-    "name": "Plupload",
+    "name": "plupload-es6",
     "description": "Plupload is a JavaScript API for dealing with file uploads it supports features like multiple file selection, file type filtering, request chunking, client side image scaling and it uses different runtimes to achieve this such as HTML 5, Silverlight and Flash.",
-    "version": "2.1.2",
-    "releaseDate": "2014-05-14",
+    "version": "2.1.11",
     "author": "Moxiecode Systems AB <support@moxiecode.com>",
     "contributors": [{
         "name": "Davit Barbakadze",
         "email": "david@moxiecode.com"
     }],
-    "homepage": "http://plupload.com",
+    "main": "build/plupload.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/moxiecode/plupload.git"
+        "url": "https://github.com/vvpvvp/plupload.git"
     },
     "bugs": {
-        "url": "https://github.com/moxiecode/plupload/issues"
+        "url": "https://github.com/vvpvvp/plupload/issues"
     },
-    "licenses": [{
-        "type": "GPLv2",
-        "url": "https://github.com/moxiecode/plupload/blob/master/license.txt"
-    }, {
-        "type": "Single Website",
-        "url": "http://plupload.com/license/plupload_commercial_single.txt"
-    }, {
-        "type": "OEM",
-        "url": "http://plupload.com/license/plupload_commercial_oem.txt"
-    }, {
-        "type": "Custom Licensing",
-        "url": "http://www.moxiecode.com/contact.php"
-    }],
     "engines": {
         "node": ">=0.8.0"
     },
     "dependencies": {
-        "jake": "0.5.x",
-        "glob": "3.2.x",
-        "jshint": "2.1.x",
-        "yuidocjs": "0.3.x",
-        "handlebars": "1.0.x"
     },
     "devDependencies": {
         "moxie-zip": "0.0.x",
